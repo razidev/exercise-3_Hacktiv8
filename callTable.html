@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercise 3 - Razi Aziz Syahputro</title>
+	<script type="text/javascript" src="./namePeople.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<div class="input-group mb-3 container-fluid">
+		<div class="input-group-prepend">
+			<span class="input-group-text" id="basic-addon1">@</span>
+		</div>
+		<input type="text" class="form-control" aria-describedby="basic-addon1" onkeyup="search()" id="myValue">
+	</div>
+	<div class="container-fluid">
+		<table class="table table-striped table-dark table-hover">
+			<thead>
+			    <tr>
+				     <th scope="col">Name</th>
+				     <th scope="col">Height</th>
+				     <th scope="col">Mass</th>
+				     <th scope="col">Hair Color</th>
+				     <th scope="col">Eye Color</th>
+				     <th scope="col">Skin Color</th>
+				     <th scope="col">Birth Year</th>
+			    </tr>
+			</thead>
+		  	<tbody id="myTable">
+				<script type="text/javascript">
+				var i;
+				var myTR;
+				for (i = 0; i < namePeople.results.length; i++) {
+					myTR = "<tr>";
+					myTR +="<td>" + namePeople.results[i].name +  "</td>";
+					myTR +="<td>" + namePeople.results[i].height +  "</td>";
+					myTR +="<td>" + namePeople.results[i].mass +  "</td>";
+					myTR +="<td>" + namePeople.results[i].hair_color +  "</td>";
+					myTR +="<td>" + namePeople.results[i].eye_color +  "</td>";
+					myTR +="<td>" + namePeople.results[i].skin_color +  "</td>";
+					myTR +="<td>" + namePeople.results[i].birth_year +  "</td>";
+					myTR += "</tr>";
+					document.write(myTR);
+				}
+				</script>
+		  	</tbody>
+		</table>
+	</div>
+
+	<script type="text/javascript">
+		function search(){
+			var input, filter, tr, td, i, j, txtValue, tdValue;
+			input = document.getElementById("myValue");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("myTable");
+			tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+			    td = tr[i];
+			    console.log(td)
+			    if (td) {
+			      txtValue = td.textContent || td.innerText;
+			      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+			        tr[i].style.display = "";
+			      } else {
+			        tr[i].style.display = "none";
+			      }
+			    }
+			}
+		}
+	</script>
+</body>
+</html>
